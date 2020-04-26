@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "messages",
+  "info": {
+    "name": "Message"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "sname": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "message": {
+      "type": "text",
+      "required": true
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "messages"
+    },
+    "person": {
+      "via": "messages",
+      "model": "person"
+    },
+    "guest": {
+      "model": "guest",
+      "via": "messages"
+    }
+  }
+}

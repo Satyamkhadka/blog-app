@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categories",
+  "info": {
+    "name": "Category"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "categoryname": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "ccover": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "tags": {
+      "type": "string",
+      "required": true
+    },
+    "blogs": {
+      "via": "categories",
+      "collection": "blog",
+      "dominant": true
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "guests",
+  "info": {
+    "name": "guest"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "gname": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "guests"
+    },
+    "gdp": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "blogs": {
+      "via": "guestauthor",
+      "collection": "blog"
+    },
+    "messages": {
+      "via": "guest",
+      "collection": "message"
+    }
+  }
+}

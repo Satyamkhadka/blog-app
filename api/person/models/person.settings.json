@@ -1,0 +1,109 @@
+{
+  "kind": "collectionType",
+  "collectionName": "people",
+  "info": {
+    "name": "People"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "firstname": {
+      "type": "string",
+      "required": true
+    },
+    "lastname": {
+      "type": "string",
+      "required": true
+    },
+    "about": {
+      "type": "richtext",
+      "required": true
+    },
+    "notice": {
+      "type": "string"
+    },
+    "dp": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "gallery": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "cv": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "miscfile": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "personId": {
+      "type": "uid",
+      "targetField": "firstname",
+      "required": true
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "person"
+    },
+    "messages": {
+      "collection": "message",
+      "via": "person"
+    },
+    "google": {
+      "type": "string",
+      "default": "google.com"
+    },
+    "facebook": {
+      "type": "string",
+      "default": "facebook.com"
+    },
+    "twitter": {
+      "type": "string",
+      "default": "twitter.com"
+    },
+    "instagram": {
+      "type": "string",
+      "default": "instagram.com"
+    },
+    "blogs": {
+      "collection": "blog",
+      "via": "person"
+    },
+    "address": {
+      "type": "richtext"
+    },
+    "contact": {
+      "type": "richtext"
+    }
+  }
+}

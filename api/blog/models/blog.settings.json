@@ -1,0 +1,87 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blogs",
+  "info": {
+    "name": "Blog"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "gallery": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "downloadables": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "guestauthor": {
+      "model": "guest",
+      "via": "blogs"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "blogs"
+    },
+    "published": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "cover": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "tags": {
+      "type": "string",
+      "required": true
+    },
+    "categories": {
+      "collection": "category",
+      "via": "blogs"
+    },
+    "rating": {
+      "type": "integer",
+      "max": 5,
+      "min": 1
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "person": {
+      "via": "blogs",
+      "model": "person"
+    }
+  }
+}

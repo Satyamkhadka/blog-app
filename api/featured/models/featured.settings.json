@@ -1,0 +1,16 @@
+{
+  "kind": "singleType",
+  "collectionName": "featureds",
+  "info": {
+    "name": "featured"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "blogs": {
+      "collection": "blog"
+    }
+  }
+}
